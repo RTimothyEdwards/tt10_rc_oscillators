@@ -1,0 +1,22 @@
+NOTE:  This layout file makes use of two existing public repositories.
+To recreate the full layout:
+
+(0) Assuming you are in the repository top level, cd to the mag/ directory
+	cd mag
+
+(1) Clone the two repositories, say:
+	mkdir ip
+	cd ip
+	clone https://github.com/RTimothyEdwards/sky130_ef_ip__rc_osc_500k
+	clone https://github.com/RTimothyEdwards/sky130_ef_ip__rc_osc_16M
+
+(2) Start magic with the sky130A technology:
+	magic -d XR -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc
+
+(3) Then in the magic console window, do:
+	addpath ip/sky130_ef_ip__rc_osc_500k/mag
+	addpath ip/sky130_ef_ip__rc_osc_16M/mag
+	load tt_um_rc_oscillators -dereference
+
+Now the entire design will be loaded.
+	
